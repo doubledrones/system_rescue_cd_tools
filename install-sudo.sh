@@ -1,11 +1,13 @@
 #!/bin/bash
 
-case "`which sudo`" in
+D_R=`cd \`dirname $0\` ; pwd`
+
+case "`which chef-solo`" in
   "")
     if [ ! -f functions.sh ]; then
-      curl -L https://raw.github.com/doubledrones/system_rescue_cd_tools/master/functions.sh -o functions.sh
+      curl -L https://raw.github.com/doubledrones/system_rescue_cd_tools/master/functions.sh -o $D_R/functions.sh
     fi
-    source functions.sh
+    source $D_R/functions.sh
 
     OTHER="
     eclass
