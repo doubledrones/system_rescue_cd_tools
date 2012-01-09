@@ -37,6 +37,9 @@ function portage_part_sync() {
       mkdir -p /usr/portage/$EBUILD/
       rsync -av rsync://`get_portage_host`/gentoo-portage/$EBUILD/ /usr/portage/$EBUILD/
       ERR=$?
+      if [ $ERR -gt 0 ]; then
+        sleep 1
+      fi
     done
   done
 }
