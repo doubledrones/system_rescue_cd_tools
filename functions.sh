@@ -6,7 +6,7 @@ function default_portage_host() {
   do
     case `echo $USED | grep " $MIRROR "` in
       "")
-        USED="$USED $MIRROR"
+        USED="$USED $MIRROR "
         echo "rsync${MIRROR}.de.gentoo.org"
         return
         ;;
