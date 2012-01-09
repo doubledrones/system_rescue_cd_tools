@@ -1,7 +1,16 @@
 #!/bin/bash
 
 function default_portage_host() {
-  echo "rsync.gentoo.org"
+  USED=""
+  for MIRROR in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+  do
+    if [ -z "`echo $USED | grep ' $MIRROR '`" ]; then
+      USED="$USED $MIRROR"
+      echo "rsync${MIRROR}.de.gentoo.org"
+      return
+    fi
+  done
+  exit 2
 }
 
 function get_portage_host() {
@@ -20,8 +29,13 @@ function get_portage_host() {
 function portage_part_sync() {
   for EBUILD in $@
   do
-    mkdir -p /usr/portage/$EBUILD/ || exit 1
-    rsync -av rsync://`get_portage_host`/gentoo-portage/$EBUILD/ /usr/portage/$EBUILD/ || exit 2
+    ERR=1
+    while [ $ERR -gt 0 ]
+    do
+      mkdir -p /usr/portage/$EBUILD/
+      rsync -av rsync://`get_portage_host`/gentoo-portage/$EBUILD/ /usr/portage/$EBUILD/
+      ERR=$?
+    done
   done
 }
 
