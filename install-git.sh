@@ -2,7 +2,7 @@
 
 D_R=`cd \`dirname $0\` ; pwd`
 
-case "`which chef-solo`" in
+case "`which git`" in
   "")
     if [ ! -f functions.sh ]; then
       curl -L https://raw.github.com/doubledrones/system_rescue_cd_tools/master/functions.sh -o $D_R/functions.sh
