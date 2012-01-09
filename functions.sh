@@ -4,11 +4,13 @@ function default_portage_host() {
   USED=""
   for MIRROR in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
   do
-    if [ -z "`echo $USED | grep ' $MIRROR '`" ]; then
-      USED="$USED $MIRROR"
-      echo "rsync${MIRROR}.de.gentoo.org"
-      return
-    fi
+    case `echo $USED | grep " $MIRROR "` in
+      "")
+        USED="$USED $MIRROR"
+        echo "rsync${MIRROR}.de.gentoo.org"
+        return
+        ;;
+    esac
   done
   exit 2
 }
