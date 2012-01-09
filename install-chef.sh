@@ -32,6 +32,9 @@ case "`which chef-solo`" in
     do
       gem install chef --no-ri --no-rdoc
       ERR=$?
+      if [ $ERR -gt 0 ]; then
+        sleep 1
+      fi
     done
     ;;
 esac
