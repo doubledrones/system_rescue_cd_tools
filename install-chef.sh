@@ -20,8 +20,6 @@ case "`which chef-solo`" in
     dev-ruby/rubygems
     "
 
-    PORTAGE_HOST=`get_portage_host`
-
     portage_part_sync $OTHER $EBUILDS
 
     echo "dev-lang/ruby -berkdb ssl" >> /etc/portage/package.use

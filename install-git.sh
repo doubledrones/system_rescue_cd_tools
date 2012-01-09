@@ -17,8 +17,6 @@ case "`which git`" in
     dev-vcs/git
     "
 
-    PORTAGE_HOST=`get_portage_host`
-
     portage_part_sync $OTHER $EBUILDS
 
     portage_emerge $EBUILDS

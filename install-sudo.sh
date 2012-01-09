@@ -20,8 +20,6 @@ case "`which sudo`" in
     app-admin/sudo
     "
 
-    PORTAGE_HOST=`get_portage_host`
-
     portage_part_sync $OTHER $EBUILDS
 
     echo "sys-devel/bison -nls" >> /etc/portage/package.use

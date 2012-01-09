@@ -6,7 +6,7 @@ function default_portage_host() {
 
 function get_portage_host() {
   if [ -n "$LOCAL_PORTAGE_HOST" ]; then
-    ping -c 5 $LOCAL_PORTAGE_HOST
+    ping -c 1 $LOCAL_PORTAGE_HOST
     if [ $? -eq 0 ]; then
       echo "$LOCAL_PORTAGE_HOST"
     else
@@ -21,7 +21,7 @@ function portage_part_sync() {
   for EBUILD in $@
   do
     mkdir -p /usr/portage/$EBUILD/ || exit 1
-    rsync -av rsync://$PORTAGE_HOST/gentoo-portage/$EBUILD/ /usr/portage/$EBUILD/ || exit 2
+    rsync -av rsync://`get_portage_host`/gentoo-portage/$EBUILD/ /usr/portage/$EBUILD/ || exit 2
   done
 }
 
