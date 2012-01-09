@@ -5,9 +5,8 @@ case "`which git`" in
   "")
     if [ ! -f functions.sh ]; then
       curl -L https://raw.github.com/doubledrones/system_rescue_cd_tools/master/functions.sh -o functions.sh
-      source functions.sh
     fi
-
+    source functions.sh
 
     OTHER="
     eclass
