@@ -14,6 +14,7 @@ case "`which chef-solo`" in
     "
 
     EBUILDS="
+    dev-libs/openssl
     sys-devel/autoconf
     dev-libs/libyaml
     sys-devel/gettext
@@ -26,7 +27,6 @@ case "`which chef-solo`" in
     virtual/rubygems
     dev-ruby/racc
     dev-ruby/rdoc
-    dev-libs/openssl
     app-admin/eselect-ruby
     dev-lang/ruby
     dev-ruby/rubygems
