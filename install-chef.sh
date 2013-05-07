@@ -36,6 +36,15 @@ case "`which chef-solo`" in
 
     echo "dev-lang/ruby -berkdb ssl" >> /etc/portage/package.use
 
+    case `cat /etc/portage/package.mask | grep dev-lang/ruby` in
+      "")
+        ;;
+      *)
+        cat /etc/portage/package.mask | grep -v dev-lang/ruby > /tmp/package.mask
+        mv /tmp/package.mask /etc/portage/package.mask
+        ;;
+    esac
+
     portage_emerge $EBUILDS
     portage_cleanout $OTHER $EBUILDS
 
