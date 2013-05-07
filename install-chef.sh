@@ -14,6 +14,7 @@ case "`which chef-solo`" in
     "
 
     EBUILDS="
+    dev-libs/libyaml
     dev-libs/openssl
     app-admin/eselect-ruby
     dev-lang/ruby
