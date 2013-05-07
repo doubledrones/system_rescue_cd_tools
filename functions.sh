@@ -58,7 +58,7 @@ function make_jobs() {
 function portage_emerge() {
   for EBUILD in $@
   do
-    MAKEOPTS="-j`make_jobs`" emerge $EBUILD || exit 3
+    MAKEOPTS="-j`make_jobs`" emerge --autounmask-write $EBUILD || exit 3
     rm -rf /usr/portage/distfiles || exit 4
   done
 }
