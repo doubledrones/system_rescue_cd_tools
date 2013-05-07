@@ -16,6 +16,7 @@ case "`which chef-solo`" in
     EBUILDS="
     sys-devel/autoconf
     dev-libs/libyaml
+    dev-perl/Locale-gettext
     sys-apps/help2man
     sys-devel/automake
     dev-util/ragel
