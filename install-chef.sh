@@ -23,6 +23,7 @@ case "`which chef-solo`" in
     dev-util/ragel
     dev-ruby/json
     dev-ruby/rake
+    virtual/rubygems
     dev-ruby/racc
     dev-ruby/rdoc
     dev-libs/openssl
