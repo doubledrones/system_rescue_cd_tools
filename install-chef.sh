@@ -25,7 +25,7 @@ case "`which chef-solo`" in
 
     echo "dev-lang/ruby -berkdb ssl" >> /etc/portage/package.use
 
-    portage_emerge $EBUILDS
+    portage_emerge --autounmask-write $EBUILDS
     portage_cleanout $OTHER $EBUILDS
 
     ERR=1
