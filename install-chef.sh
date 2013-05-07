@@ -16,6 +16,7 @@ case "`which chef-solo`" in
     EBUILDS="
     sys-devel/autoconf
     dev-libs/libyaml
+    dev-ruby/racc
     dev-ruby/rdoc
     dev-libs/openssl
     app-admin/eselect-ruby
