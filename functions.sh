@@ -58,12 +58,11 @@ function make_jobs() {
 function portage_emerge() {
   for EBUILD in $@
   do
-    case `qlist -I | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" | grep $EBUILD` in
-      "")
-        MAKEOPTS="-j`make_jobs`" emerge --autounmask-write $EBUILD || exit 3
-        rm -rf /usr/portage/distfiles || exit 4
-        ;;
-    esac
+    if [ ! -d /tmp/$EBUILD.finished ]; then
+      MAKEOPTS="-j`make_jobs`" emerge --autounmask-write $EBUILD || exit 3
+      rm -rf /usr/portage/distfiles || exit 4
+      mkdir -p /tmp/$EBUILD.finished
+    fi
   done
 }
 
