@@ -21,6 +21,7 @@ case "`which chef-solo`" in
     sys-devel/gettext
     dev-perl/Locale-gettext
     sys-apps/help2man
+    sys-devel/automake-wrapper
     sys-devel/automake
     dev-util/ragel
     dev-ruby/json
