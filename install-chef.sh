@@ -15,6 +15,7 @@ case "`which chef-solo`" in
 
     EBUILDS="
     dev-libs/openssl
+    sys-devel/autoconf-wrapper
     sys-devel/autoconf
     dev-libs/libyaml
     sys-devel/gettext
