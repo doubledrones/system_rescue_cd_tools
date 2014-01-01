@@ -47,7 +47,7 @@ case "`which chef-solo`" in
         ;;
     esac
 
-    portage_emerge $EBUILDS
+    RUBY_TARGETS="ruby20" portage_emerge $EBUILDS
     portage_cleanout $OTHER $EBUILDS
 
     ERR=1
