@@ -50,6 +50,8 @@ case "`which chef-solo`" in
     portage_emerge $EBUILDS
     portage_cleanout $OTHER $EBUILDS
 
+    eselect ruby set ruby20
+
     ERR=1
     while [ $ERR -gt 0 ]
     do
