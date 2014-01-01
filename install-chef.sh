@@ -52,7 +52,7 @@ case "`which chef-solo`" in
 
     eselect ruby set ruby20
 
-    force_gem_install yajl
+    force_gem_install yajl-ruby
     force_gem_install chef
     ;;
 esac
