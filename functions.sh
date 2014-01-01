@@ -72,3 +72,15 @@ function portage_cleanout() {
     rm -rf /usr/portage/$EBUILD/ || exit 5
   done
 }
+
+function force_gem_install() {
+  ERR=1
+  while [ $ERR -gt 0 ]
+  do
+    gem install $1 --no-ri --no-rdoc
+    ERR=$?
+    if [ $ERR -gt 0 ]; then
+      sleep 1
+    fi
+  done
+}

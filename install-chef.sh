@@ -52,14 +52,7 @@ case "`which chef-solo`" in
 
     eselect ruby set ruby20
 
-    ERR=1
-    while [ $ERR -gt 0 ]
-    do
-      gem install chef --no-ri --no-rdoc
-      ERR=$?
-      if [ $ERR -gt 0 ]; then
-        sleep 1
-      fi
-    done
+    force_gem_install yajl
+    force_gem_install chef
     ;;
 esac
