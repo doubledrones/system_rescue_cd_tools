@@ -59,7 +59,7 @@ function portage_emerge() {
   for EBUILD in $@
   do
     if [ ! -d /tmp/$EBUILD.finished ]; then
-      MAKEOPTS="-j`make_jobs`" emerge --autounmask-write $EBUILD || exit 3
+      RUBY_TARGETS="ruby20" MAKEOPTS="-j`make_jobs`" emerge --autounmask-write $EBUILD || exit 3
       rm -rf /usr/portage/distfiles || exit 4
       mkdir -p /tmp/$EBUILD.finished
     fi
