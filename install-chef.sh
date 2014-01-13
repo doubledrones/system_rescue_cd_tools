@@ -13,7 +13,7 @@ case "`which chef-solo`" in
     eclass
     "
 
-    EBUILDS="
+    DEPENDENCIES="
     dev-libs/openssl
     sys-devel/autoconf-wrapper
     sys-devel/autoconf
@@ -31,10 +31,13 @@ case "`which chef-solo`" in
     dev-ruby/rdoc
     app-admin/eselect-ruby
     dev-lang/ruby
+    "
+
+    EBUILDS="
     dev-ruby/rubygems
     "
 
-    portage_part_sync $OTHER $EBUILDS
+    portage_part_sync $OTHER $DEPENDENCIES $EBUILDS
 
     echo "dev-lang/ruby -berkdb ssl" >> /etc/portage/package.use
 
@@ -48,7 +51,7 @@ case "`which chef-solo`" in
     esac
 
     portage_emerge $EBUILDS
-    portage_cleanout $OTHER $EBUILDS
+    portage_cleanout $OTHER $DEPENDENCIES $EBUILDS
 
     eselect ruby set ruby20
 

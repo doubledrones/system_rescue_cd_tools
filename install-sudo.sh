@@ -13,19 +13,22 @@ case "`which sudo`" in
     eclass
     "
 
-    EBUILDS="
+    DEPENDENCIES="
     sys-devel/bison
     net-mail/mailbase
     mail-mta/ssmtp
+    "
+
+    EBUILDS="
     app-admin/sudo
     "
 
-    portage_part_sync $OTHER $EBUILDS
+    portage_part_sync $OTHER $DEPENDENCIES $EBUILDS
 
     echo "sys-devel/bison -nls" >> /etc/portage/package.use
     echo "mail-mta/ssmtp -ipv6 mta -ssl" >> /etc/portage/package.use
 
     portage_emerge $EBUILDS
-    portage_cleanout $OTHER $EBUILDS
+    portage_cleanout $OTHER $DEPENDENCIES $EBUILDS
     ;;
 esac
