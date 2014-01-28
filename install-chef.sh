@@ -2,6 +2,8 @@
 
 D_R=`cd \`dirname $0\` ; pwd`
 
+export PATH="/usr/local/bin:/usr/bin:$PATH"
+
 case "`which chef-solo`" in
   "")
     if [ ! -f functions.sh ]; then
