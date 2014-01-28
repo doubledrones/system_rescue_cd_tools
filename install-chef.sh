@@ -69,6 +69,8 @@ case "`which chef-solo`" in
     portage_part_sync $OTHER $DEPENDENCIES $EBUILDS
 
     echo "dev-lang/ruby -berkdb ssl" >> /etc/portage/package.use
+    echo "=dev-ruby/rubygems-1.8.25 ~*" >> /etc/portage/package.keywords
+    echo ">dev-ruby/rubygems-1.8.25" >> /etc/portage/package.mask
 
     case `cat /etc/portage/package.mask | grep dev-lang/ruby` in
       "")
