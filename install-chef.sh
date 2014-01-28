@@ -14,7 +14,6 @@ case "`which chef-solo`" in
     "
 
     DEPENDENCIES="
-    dev-libs/openssl
     sys-devel/autoconf-wrapper
     sys-devel/autoconf
     dev-libs/libyaml
@@ -30,11 +29,41 @@ case "`which chef-solo`" in
     dev-ruby/racc
     dev-ruby/rdoc
     app-admin/eselect-ruby
+    dev-ruby/treetop
+    dev-ruby/mixlib-authentication
+    dev-ruby/ipaddress
+    dev-ruby/polyglot
+    dev-ruby/mixlib-cli
+    dev-ruby/bunny
+    dev-ruby/mixlib-config
+    dev-ruby/mixlib-log
+    dev-ruby/ohai
+    dev-ruby/amq-protocol
+    dev-ruby/mixlib-shellout
+    dev-ruby/moneta
+    dev-ruby/net-ssh
+    dev-ruby/net-ssh-multi
+    dev-ruby/ruby-shadow
+    dev-ruby/rest-client
+    dev-ruby/erubis
+    dev-ruby/yajl-ruby
+    dev-ruby/highline
+    dev-ruby/uuidtools
+    dev-ruby/mime-types
+    dev-libs/yajl
+    dev-util/cmake
+    dev-ruby/systemu
+    dev-ruby/net-ssh-gateway
+    dev-ruby/test-unit
+    dev-ruby/abstract
+    virtual/ruby-ssl
+    dev-libs/openssl
     dev-lang/ruby
+    dev-ruby/rubygems
     "
 
     EBUILDS="
-    dev-ruby/rubygems
+    app-admin/chef
     "
 
     portage_part_sync $OTHER $DEPENDENCIES $EBUILDS
@@ -50,12 +79,13 @@ case "`which chef-solo`" in
         ;;
     esac
 
+    portage_emerge dev-libs/openssl
+    portage_emerge ruby:1.9
+
+    eselect ruby set ruby19
+
     portage_emerge $EBUILDS
     portage_cleanout $OTHER $DEPENDENCIES $EBUILDS
 
-    eselect ruby set ruby20
-
-    force_gem_install yajl-ruby
-    force_gem_install chef
     ;;
 esac
