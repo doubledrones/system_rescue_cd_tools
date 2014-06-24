@@ -1,10 +1,11 @@
 This is container for tools we use for System Rescue CD.
 
-Currently 4 packages available:
+Currently 5 packages available:
   bash < <(curl -L https://raw.github.com/doubledrones/system_rescue_cd_tools/master/install-chef.sh)
   bash < <(curl -L https://raw.github.com/doubledrones/system_rescue_cd_tools/master/install-sudo.sh)
   bash < <(curl -L https://raw.github.com/doubledrones/system_rescue_cd_tools/master/install-git.sh)
   bash < <(curl -L https://raw.github.com/doubledrones/system_rescue_cd_tools/master/install-vbetool.sh)
+  bash < <(curl -L https://raw.github.com/doubledrones/system_rescue_cd_tools/master/install-ack.sh)
 
 
-Tested on System Rescue CD 4.0.0 on 28.01.2014
+Tested on System Rescue CD 4.0.0 on 24.06.2014
