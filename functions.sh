@@ -1,13 +1,17 @@
 #!/bin/bash
 
+function gentoo_rsync_mirror_hosts() {
+  curl http://www.gentoo.org/main/en/mirrors-rsync.xml | grep 'a href="rsync:' | cut -f 2 -d \"  | cut -f3- -d /
+}
+
 function default_portage_host() {
-  USED=""
-  for MIRROR in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+  USED=" "
+  for MIRROR_HOST in `gentoo_rsync_mirror_hosts`
   do
-    case `echo $USED | grep " $MIRROR "` in
+    case `echo $USED | grep " $MIRROR_HOST "` in
       "")
-        USED="$USED $MIRROR "
-        echo "rsync${MIRROR}.de.gentoo.org"
+        USED="$USED $MIRROR_HOST "
+        echo $MIRROR_HOST
         return
         ;;
     esac
