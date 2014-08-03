@@ -74,6 +74,21 @@ echo "dev-lang/ruby -berkdb ssl" >> /etc/portage/package.use
 echo "=dev-ruby/rubygems-1.8.25 ~*" >> /etc/portage/package.keywords
 echo ">dev-ruby/rubygems-1.8.25" >> /etc/portage/package.mask
 
+if [ ! -f /usr/portage/dev-ruby/rubygems/rubygems-1.8.25.ebuild ]; then
+  cd /usr/portage/dev-ruby/rubygems
+  wget http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/dev-ruby/rubygems/rubygems-1.8.25.ebuild || rm -f rubygems-1.8.25.ebuild
+fi
+if [ ! -f /usr/portage/distfiles/rubygems-1.8.25.tgz ]; then
+  if [ ! -d /usr/portage/distfiles ]; then
+    mkdir /usr/portage/distfiles/
+  fi
+  cd /usr/portage/distfiles/
+  if [ ! -f rubygems-1.8.25.tgz ]; then
+    wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.25.tgz || rm -f rubygems-1.8.25.tgz
+  fi
+fi
+ebuild /usr/portage/dev-ruby/rubygems/rubygems-1.8.25.ebuild digest
+
 case `cat /etc/portage/package.mask | grep dev-lang/ruby` in
   "")
     ;;
