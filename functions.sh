@@ -35,16 +35,20 @@ function get_portage_host() {
 function portage_part_sync() {
   for EBUILD in $@
   do
-    ERR=1
-    while [ $ERR -gt 0 ]
-    do
-      mkdir -p /usr/portage/$EBUILD/
-      rsync -av rsync://`get_portage_host`/gentoo-portage/$EBUILD/ /usr/portage/$EBUILD/
-      ERR=$?
-      if [ $ERR -gt 0 ]; then
-        sleep 1
-      fi
-    done
+    if [ ! -d /tmp/portage-synced/$EBUILD/ ]; then
+      ERR=1
+      while [ $ERR -gt 0 ]
+      do
+        mkdir -p /usr/portage/$EBUILD/
+        rsync -av rsync://`get_portage_host`/gentoo-portage/$EBUILD/ /usr/portage/$EBUILD/
+        ERR=$?
+        if [ $ERR -gt 0 ]; then
+          sleep 1
+        else
+          mkdir -p /tmp/portage-synced/$EBUILD/
+        fi
+      done
+    fi
   done
 }
 
