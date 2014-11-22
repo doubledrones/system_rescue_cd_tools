@@ -78,6 +78,7 @@ function portage_cleanout() {
   for EBUILD in $@
   do
     rm -rf /usr/portage/$EBUILD/ || exit 5
+    rm -rf /tmp/portage-synced/$EBUILD/ || exit 6
   done
 }
 
