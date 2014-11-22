@@ -73,6 +73,7 @@ portage_part_sync $OTHER $DEPENDENCIES $EBUILDS
 echo "dev-lang/ruby -berkdb ssl" >> /etc/portage/package.use
 echo "=dev-ruby/rubygems-1.8.25 ~*" >> /etc/portage/package.keywords
 echo ">dev-ruby/rubygems-1.8.25" >> /etc/portage/package.mask
+echo "=dev-libs/openssl-0.9.8z_p3" >> /etc/portage/package.unmask
 
 if [ ! -f /usr/portage/dev-ruby/rubygems/rubygems-1.8.25.ebuild ]; then
   cd /usr/portage/dev-ruby/rubygems
